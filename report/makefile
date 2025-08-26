@@ -1,5 +1,5 @@
 # nome do arquivo principal
-MAIN = sbc-template
+MAIN = main
 
 # comandos para compilar
 LATEX = pdflatex
@@ -10,7 +10,6 @@ LATEX_FLAGS = -interaction=nonstopmode -halt-on-error
 
 # arquivos gerados temporários
 TEMP_FILES = *.aux *.log *.bbl *.blg *.toc *.out *.synctex.gz *.snm *.nav auto *-blx.bib *.run.xml
-
 
 all: 
 	$(LATEX) $(MAIN).tex
@@ -26,8 +25,3 @@ clean:
 # limpa o pdf também
 cleanall: clean
 	rm -f $(MAIN).pdf
-
-# visualização do PDF com o evince
-view: all
-	@echo "Abrindo $(MAIN).pdf com o Evince..."
-	evince $(MAIN).pdf &
