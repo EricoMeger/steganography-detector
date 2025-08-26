@@ -1,2 +1,3 @@
 # steganography-detector
-Research and implementation on detecting steganography in images using AI and machine learning
+
+dataset: https://www.kaggle.com/competitions/alaska2-image-steganalysis/overview
