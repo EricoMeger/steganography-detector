@@ -38,21 +38,21 @@ Pinhais - PR - Brasil}
 \maketitle
 
 \begin{abstract}
-  This meta-paper describes the style to be used in articles and short papers
-  for SBC conferences. For papers in English, you should add just an abstract
-  while for the papers in Portuguese, we also ask for an abstract in
-  Portuguese (``resumo''). In both cases, abstracts should not have more than
-  10 lines and must be in the first page of the paper.
+	This meta-paper describes the style to be used in articles and short papers
+	for SBC conferences. For papers in English, you should add just an abstract
+	while for the papers in Portuguese, we also ask for an abstract in
+	Portuguese (``resumo''). In both cases, abstracts should not have more than
+	10 lines and must be in the first page of the paper.
 \end{abstract}
 
 \begin{resumo}
-  Este meta-artigo descreve o estilo a ser usado na confecção de artigos e
-  resumos de artigos para publicação nos anais das conferências organizadas
-  pela SBC. É solicitada a escrita de resumo e abstract apenas para os artigos
-  escritos em português. Artigos em inglês deverão apresentar apenas abstract.
-  Nos dois casos, o autor deve tomar cuidado para que o resumo (e o abstract)
-  não ultrapassem 10 linhas cada, sendo que ambos devem estar na primeira
-  página do artigo.
+	Este meta-artigo descreve o estilo a ser usado na confecção de artigos e
+	resumos de artigos para publicação nos anais das conferências organizadas
+	pela SBC. É solicitada a escrita de resumo e abstract apenas para os artigos
+	escritos em português. Artigos em inglês deverão apresentar apenas abstract.
+	Nos dois casos, o autor deve tomar cuidado para que o resumo (e o abstract)
+	não ultrapassem 10 linhas cada, sendo que ambos devem estar na primeira
+	página do artigo.
 \end{resumo}
 
 \section{Introdução}
@@ -122,7 +122,15 @@ aprofundamento de seu estudo.
 
 Explorar o uso de bibliotecas de software livre no desenvolvimento de modelos de inteligência artificial para a detecção de esteganografia em imagens digitais.
 
-\section{Revisão bibliográfica} \label{sec:firstpage}
+\section{Revisão bibliográfica} \label{sec:firstpage} 
+Essa seção revisará os principais trabalhos relacionados, destacando contribuições, métodos e limitações que fundamentam o 
+desenvolvimento desta pesquisa.
+
+O trabalho \textit{"An Ensemble Model using CNNs on Different Domains for ALASKA2 Image Steganalysis"} de Chubachi \cite{chubachi2020cnn} surge da constatação de que muitos detectores de esteganografia baseados em aprendizado profundo não generalizam bem em cenários reais devido ao uso de conjuntos de dados simplificados. A competição ALASKA2 ofereceu um ambiente mais realista, com imagens JPEG coloridas de diferentes origens e processos, estimulando soluções mais aplicáveis. Nesse contexto, o objetivo do autor foi desenvolver um modelo de detecção baseado em um ensemble de redes convolucionais que combinasse informações tanto do domínio espacial (RGB, YUV e Lab) quanto do domínio da frequência (coeficientes DCT).  
+
+A metodologia proposta envolveu CNNs construídas sobre arquiteturas EfficientNet, com ajustes para lidar com as especificidades de cada domínio. No caso dos coeficientes DCT, foram aplicadas codificações one-hot, recortes de valores e convoluções dilatadas para capturar padrões sutis. Para integrar os modelos, além da simples média de previsões, foi desenvolvido um perceptron multicamada capaz de combinar os mapas de características. Também se utilizaram técnicas auxiliares, como pseudo-rotulagem e stacking com LightGBM. Em experimentos conduzidos com 300 mil imagens, o uso combinado dos modelos trouxe ganhos consistentes, resultando em uma performance de AUC ponderado próxima de 0,94 e garantindo a terceira colocação na competição.  
+
+O estudo apresenta como pontos fortes a inovação de combinar diferentes domínios e a validação em um cenário competitivo e realista. Contudo, o alto custo computacional e a limitação de testar apenas algoritmos de esteganografia já conhecidos restringem sua aplicabilidade prática. Em contraste, a proposta desenvolvida neste trabalho busca explorar o uso de bibliotecas de software livre para a construção de modelos de inteligência artificial em esteganálise. Diferente de \cite{chubachi2020cnn}, que enfatiza ganhos técnicos com arquiteturas avançadas, nossa abordagem objetiva democratizar a área ao garantir reprodutibilidade, baixo custo e acessibilidade, sem deixar de buscar acurácia.  
 
 \section{Metodologia}
 
