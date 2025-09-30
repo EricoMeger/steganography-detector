@@ -145,7 +145,7 @@ domínio da frequência (coeficientes DCT).
 A metodologia proposta envolveu CNNs construídas sobre arquiteturas
 EfficientNet, com ajustes para lidar com as especificidades de cada domínio. No
 caso dos coeficientes DCT, foram aplicadas codificações one-hot, recortes de
-valores e convoluções dilatadas para capturar padrões sutis. Para integrar os
+valores e convoluções dilatadas para capturar padrões. Para integrar os
 modelos, além da simples média de previsões, foi desenvolvido um perceptron
 multicamada capaz de combinar os mapas de características. Também se utilizaram
 técnicas auxiliares, como pseudo-rotulagem e stacking com LightGBM. Em
@@ -160,56 +160,21 @@ já conhecidos restringem sua aplicabilidade prática.
 
 %trabalho 2
 
-O trabalho \textit{ImageNet Pre-trained CNNs for JPEG Steganalysis} de Yousfi
-et al. \cite{fridrich2020imagenet} apresenta uma investigação sobre o uso de
-redes neurais convolucionais (CNNs) pré-treinadas para a esteganálise de
-imagens JPEG. A principal motivação para o estudo surgiu a partir da competição
-de esteganálise ALASKA II, onde foi observado que os participantes com melhor
-desempenho utilizavam modelos de visão computacional de uso geral, como
-EfficientNet e ResNet, em vez de arquiteturas especializadas e treinadas do
-zero para a tarefa. Essa nova abordagem, baseada em aprendizagem por
-transferência (transfer learning), representava uma mudança de paradigma em
-relação a modelos consolidados, como a SRNet, que eram projetados
-especificamente para esteganálise. Diante desse cenário, o principal objetivo
-dos autores foi investigar e demonstrar formalmente a eficácia e a
-superioridade desses modelos pré-treinados no ImageNet para a detecção de
-esteganografia em imagens JPEG, comparando seu desempenho com as abordagens
-tradicionais.
-
-A metodologia utilizada centrou-se em refinar (fine-tuning) diversas
-arquiteturas pré-treinadas, como EfficientNet, MixNet e ResNet, no conjunto de
-dados da ALASKA II. Os autores também conduziram experimentos para avaliar o
-impacto de decisões arquitetônicas, como a remoção de camadas de pooling ou
-stride no início da rede, confirmando que a manutenção da resolução original
-nas primeiras camadas é crucial para a performance em esteganálise. O
-experimento principal foi conduzido no dataset da ALASKA II, que continha
-imagens comprimidas com fatores de qualidade 75, 90 e 95 e com mensagens
-ocultas pelos algoritmos J-UNIWARD, J-MiPOD e UERD.
-
-Os pontos fortes dessa abordagem, destacados no artigo, são a acurácia
-superior, a maior eficiência de dados e uma velocidade de treinamento ordens de
-magnitude mais rápida em comparação com o treinamento de um modelo do zero.
-Como limitação, os próprios autores apontam que o estudo foi amplamente focado
-no ambiente da ALASKA II e que o ganho de desempenho obtido com o
-pré-treinamento tende a diminuir à medida que o volume de dados para
-treinamento na tarefa final aumenta.
-
-%trabalho 3
-
-O estudo \textit{Ensemble of CNNs for Steganalysis: An Empirical Study} de Xu
-et al. \cite{xu2016ensemble} é motivado pela observação de que, embora as Redes
-Neurais Convolucionais (CNNs) estivessem ganhando popularidade em esteganálise,
-a maioria das pesquisas se concentrava no design de um único modelo de CNN. No
-entanto, no campo mais amplo da visão computacional e do aprendizado de
-máquina, as melhores performances são consistentemente alcançadas por meio de
-ensembles, ou seja, a combinação de múltiplos modelos. Os autores perceberam
-uma lacuna na literatura de esteganálise, que ainda não havia explorado a fundo
-estratégias de ensemble mais sofisticadas do que a simples média das previsões.
-O principal objetivo do trabalho foi, portanto, conduzir um estudo empírico
-para avaliar o desempenho de diferentes estratégias de combinação de CNNs para
-a tarefa de esteganálise, buscando ir além da média de modelos e testar o uso
-de classificadores de segundo nível treinados sobre as saídas e representações
-internas das redes.
+Explorando ensembles de forma mais sistemática, o estudo \textit{Ensemble of
+  CNNs for Steganalysis: An Empirical Study} de Xu et al. \cite{xu2016ensemble}
+retorna ao tema de ensembles, mas com uma abordagem mais empírica. Motivado
+pela observação de que, embora as Redes Neurais Convolucionais (CNNs)
+estivessem ganhando popularidade em esteganálise, a maioria das pesquisas se
+concentrava no design de um único modelo de CNN. No entanto, no campo mais
+amplo da visão computacional e do aprendizado de máquina, as melhores
+performances são consistentemente alcançadas por meio de ensembles, ou seja, a
+combinação de múltiplos modelos. Os autores perceberam uma lacuna na literatura
+de esteganálise, que ainda não havia explorado a fundo estratégias de ensemble
+mais sofisticadas do que a simples média das previsões. O principal objetivo do
+trabalho foi, portanto, conduzir um estudo empírico para avaliar o desempenho
+de diferentes estratégias de combinação de CNNs para a tarefa de esteganálise,
+buscando ir além da média de modelos e testar o uso de classificadores de
+segundo nível treinados sobre as saídas e representações internas das redes.
 
 A metodologia proposta envolveu, primeiramente, o treinamento de um conjunto de
 16 CNNs individuais, que serviram como "aprendizes de base", cada uma treinada
@@ -233,19 +198,55 @@ simples das CNNs base. As limitações do estudo, no entanto, incluem a sua
 validação em apenas um dataset, contra um único algoritmo esteganográfico e com
 uma única taxa de inserção, além do alto custo computacional da abordagem.
 
-%trabalho 4
+%trabalho 3
 
-O artigo \textit{An Intriguing Struggle of CNNs in JPEG Steganalysis and the
-  OneHot Solution} de Yousfi e Fridrich \cite{fridrichOnehot} parte da descoberta
-de cenários específicos onde as modernas Redes Neurais Convolucionais (CNNs),
-como a SRNet, apresentavam um desempenho surpreendentemente inferior ao de
-métodos mais antigos baseados em extração de características, como o JPEG Rich
-Model (JRM). Essa falha era particularmente evidente na detecção do algoritmo
-nsF5 e do J-UNIWARD em certos tipos de imagem JPEG, e a análise revelou que o
-sucesso do JRM nesses casos se devia à sua capacidade de computar estatísticas
-simples dos coeficientes DCT, como histogramas de coocorrência, algo que as
-CNNs convencionais, que operam na imagem descomprimida, não conseguiam
-"enxergar".
+Complementando a abordagem de ensemble, o trabalho \textit{ImageNet Pre-trained
+  CNNs for JPEG Steganalysis} de Yousfi et al. \cite{fridrich2020imagenet}
+explora uma direção diferente: o uso de transfer learning em esteganálise. A
+principal motivação para o estudo surgiu a partir da competição de esteganálise
+ALASKA II, onde foi observado que os participantes com melhor desempenho
+utilizavam modelos de visão computacional de uso geral, como EfficientNet e
+ResNet, em vez de arquiteturas especializadas e treinadas do zero para a
+tarefa. Essa nova abordagem, baseada em aprendizagem por transferência
+(transfer learning), representava uma mudança de paradigma em relação a modelos
+consolidados, como a SRNet, que eram projetados especificamente para
+esteganálise. Diante desse cenário, o principal objetivo dos autores foi
+investigar e demonstrar formalmente a eficácia e a superioridade desses modelos
+pré-treinados no ImageNet para a detecção de esteganografia em imagens JPEG,
+comparando seu desempenho com as abordagens tradicionais.
+
+A metodologia utilizada centrou-se em refinar (fine-tuning) diversas
+arquiteturas pré-treinadas, como EfficientNet, MixNet e ResNet, no conjunto de
+dados da ALASKA II. Os autores também conduziram experimentos para avaliar o
+impacto de decisões arquitetônicas, como a remoção de camadas de pooling ou
+stride no início da rede, confirmando que a manutenção da resolução original
+nas primeiras camadas é crucial para a performance em esteganálise. O
+experimento principal foi conduzido no dataset da ALASKA II, que continha
+imagens comprimidas com fatores de qualidade 75, 90 e 95 e com mensagens
+ocultas pelos algoritmos J-UNIWARD, J-MiPOD e UERD.
+
+Os pontos fortes dessa abordagem, destacados no artigo, são a acurácia
+superior, a maior eficiência de dados e uma velocidade de treinamento ordens de
+magnitude mais rápida em comparação com o treinamento de um modelo do zero.
+Como limitação, os próprios autores apontam que o estudo foi amplamente focado
+no ambiente da ALASKA II e que o ganho de desempenho obtido com o
+pré-treinamento tende a diminuir à medida que o volume de dados para
+treinamento na tarefa final aumenta.
+
+%trabalho 4
+Diferentemente das abordagens anteriores que se concentram em arquiteturas de
+ensemble ou transfer learning, o artigo \textit{An Intriguing Struggle of CNNs
+  in JPEG Steganalysis and the OneHot Solution} de Yousfi e Fridrich
+\cite{fridrichOnehot} identifica e resolve uma limitação específica das CNNs em
+esteganálise. A pesquisa parte da descoberta de cenários específicos onde as
+modernas CNNs, como a SRNet, apresentavam um desempenho surpreendentemente
+inferior ao de métodos mais antigos baseados em extração de características,
+como o JPEG Rich Model (JRM). Essa falha era particularmente evidente na
+detecção do algoritmo nsF5 e do J-UNIWARD em certos tipos de imagem JPEG, e a
+análise revelou que o sucesso do JRM nesses casos se devia à sua capacidade de
+computar estatísticas simples dos coeficientes DCT, como histogramas de
+coocorrência, algo que as CNNs convencionais, que operam na imagem
+descomprimida, não conseguiam "enxergar".
 
 A metodologia se baseia em duas inovações principais. A primeira é a própria
 rede "OneHot CNN", que transforma sua entrada através de uma camada de
@@ -267,20 +268,19 @@ rede OneHot é altamente especializada para esses casos de falha, o que
 justifica sua fusão com uma rede mais geral como a SRNet.
 
 %trabalho 5
-
-O artigo \textit{Comprehensive survey on image steganalysis using deep
-  learning} de De La Croix et al. \cite{LaCroix2024survey} surge como uma
-resposta à evolução e complexidade do campo da esteganálise. A principal
-motivação dos autores reside na observação de que as abordagens tradicionais,
-baseadas em aprendizado de máquina (ML), se mostraram ineficazes contra os
-modernos algoritmos de esteganografia. Métodos clássicos como Support Vector
-Machines (SVM) e Ensemble Classifiers (EC) dependem de um processo árduo e
-manual de extração de características, o que não só consome tempo, mas também
-sofre com a "maldição da dimensionalidade", onde o excesso de características
-prejudica o desempenho do classificador. A introdução do aprendizado profundo
-(deep learning) marcou uma mudança de paradigma, unificando a extração de
-características e a classificação em um único processo otimizado e de ponta a
-ponta.
+Para contextualizar os trabalhos anteriores dentro do panorama geral da área, o
+artigo \textit{Comprehensive survey on image steganalysis using deep learning}
+de De La Croix et al. \cite{LaCroix2024survey} oferece uma visão abrangente do
+estado da arte. A principal motivação dos autores reside na observação de que
+as abordagens tradicionais, baseadas em aprendizado de máquina (ML), se
+mostraram ineficazes contra os modernos algoritmos de esteganografia. Métodos
+clássicos como Support Vector Machines (SVM) e Ensemble Classifiers (EC)
+dependem de um processo árduo e manual de extração de características, o que
+não só consome tempo, mas também sofre com a "maldição da dimensionalidade",
+onde o excesso de características prejudica o desempenho do classificador. A
+introdução do aprendizado profundo (deep learning) marcou uma mudança de
+paradigma, unificando a extração de características e a classificação em um
+único processo otimizado e de ponta a ponta.
 
 A metodologia empregada pelos autores é a de uma revisão sistemática da
 literatura, baseada no protocolo PRISMA. Eles selecionaram 24 artigos de ponta,
@@ -303,7 +303,6 @@ dificuldade na identificação de características globais, e necessidade de um
 grande número de amostras de treinamento. Como limitação, a revisão foca
 principalmente em imagens no domínio espacial, deixando lacunas para outros
 domínios como JPEG.
-
 
 % Isso daqui vai ser nossa "conclusão" da revisão bibliográfica, já q é basicamente isso q a gente tem de diferente
 Em contraste com os trabalhos revisados, a proposta desenvolvida neste trabalho
