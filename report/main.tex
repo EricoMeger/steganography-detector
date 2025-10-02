@@ -378,47 +378,6 @@ qualquer trabalho de revisão é que ele depende da qualidade e da consistência
 dos dados reportados pelos artigos originais, não gerando novos resultados
 empíricos por si só.
 
-%trabalho 7
-Investigando uma nova e poderosa tendência no campo, o artigo \textit{ImageNet
-  Pre-trained CNNs for JPEG Steganalysis} de fridrich et al.
-\cite{fridrich2020imagenet} oferece uma validação empírica de uma abordagem
-inovadora. A principal motivação dos autores surgiu a partir da competição de
-esteganálise ALASKA II, onde foi observado que as soluções de melhor desempenho
-não eram redes neurais projetadas do zero especificamente para a tarefa, como a
-SRNet, mas sim arquiteturas de visão computacional de uso geral (EfficientNet,
-MixNet) pré-treinadas no massivo dataset ImageNet. A hipótese era que a
-exposição a uma imensa diversidade de imagens durante o pré-treinamento
-capacitava esses modelos a reconhecerem uma vasta gama de texturas, ruídos e
-padrões, habilidades cruciais para detectar o sutil sinal deixado pela
-esteganografia moderna. O objetivo do trabalho foi, portanto, investigar e
-demonstrar formalmente a superioridade dessa abordagem de aprendizagem por
-transferência (transfer learning) para a esteganálise de imagens JPEG.
-
-A metodologia empregada centrou-se no refinamento (fine-tuning) de modelos
-pré-treinados, como EfficientNet e MixNet, utilizando o dataset da competição
-ALASKA II. Os autores testaram diferentes pipelines de treinamento e realizaram
-um estudo de ablação para confirmar um princípio fundamental em esteganálise: a
-importância de evitar operações de redução de dimensionalidade, como pooling ou
-stride, nas camadas iniciais da rede, a fim de preservar os componentes de alta
-frequência onde o ruído esteganográfico é mais evidente. O experimento
-principal foi conduzido no dataset ALASKA II, que continha imagens com três
-algoritmos de esteganografia (J-UNIWARD, J-MiPOD e UERD) e três fatores de
-qualidade JPEG (75, 90 e 95). Os resultados, medidos pela métrica wAUC,
-mostraram que todos os modelos pré-treinados testados superaram de forma
-marcante o desempenho da SRNet, que serviu como baseline, com modelos "maiores
-e mais profundos" geralmente alcançando maior acurácia de detecção.
-
-Um dos pontos fortes mais significativos desta abordagem é a combinação de
-desempenho superior com uma eficiência notável: o processo de refinamento é
-ordens de magnitude mais rápido do que treinar uma rede do zero, requer menos
-dados para atingir alta performance e simplifica o treinamento ao permitir que
-um único modelo lide com múltiplos fatores de qualidade JPEG simultaneamente.
-Como limitação, os próprios autores admitem que o estudo foi restrito ao escopo
-e ao tempo da competição ALASKA II. Além disso, uma observação crucial foi que
-o benefício de desempenho obtido com o pré-treinamento parece diminuir à medida
-que o volume de dados de treinamento na tarefa final aumenta, sugerindo que sua
-maior vantagem pode estar em cenários com dados mais limitados.
-
 %trabalho 8
 Buscando avançar o estado da arte em esteganálise no domínio espacial, o artigo
 \textit{A convolutional neural network to detect possible hidden data in
