@@ -18,10 +18,15 @@
 
 \usepackage{graphicx,url}
 
+\usepackage{booktabs}
+
+\usepackage{float}
+
 %\usepackage[brazil]{babel}   
 \usepackage[utf8]{inputenc}  
 
 \renewcommand\refname{Referências} % Troca nome da secao de references para referencias
+\renewcommand\tablename{Tabela}
 
 \sloppy
 
@@ -443,7 +448,196 @@ relevância no contexto atual da pesquisa em esteganálise. Por fim, será
 realizada uma discussão comparativa entre os diferentes tipos de ferramentas,
 destacando suas complementaridades e os caminhos evolutivos da área.
 
-\section{Resultados e discussões}
+\section{Resultados e Discussões}
+
+A análise foi conduzida a partir de um levantamento de ferramentas de software
+livre voltadas à esteganografia e à esteganálise em imagens digitais. As
+ferramentas foram agrupadas em duas categorias principais: (i) soluções
+tradicionais, baseadas em métodos clássicos de inserção e detecção de mensagens
+ocultas, e (ii) soluções modernas, baseadas em redes neurais convolucionais
+(CNNs), que representam o atual estado da arte na detecção automática de
+esteganografia. Os critérios de análise consideraram aspectos como objetivo,
+abordagem técnica, tipo de licença, disponibilidade de código, documentação,
+acessibilidade e relevância para pesquisa e desenvolvimento.
+
+\subsection{Ferramentas tradicionais}
+
+As ferramentas tradicionais representam a base histórica da esteganografia
+prática, fornecendo utilitários acessíveis para detecção de dados ocultos.
+
+\begin{table}[H]
+  \centering
+  \caption{Ferramentas tradicionais de software livre para estegoanálise.}
+  \label{tab:tradicionais}
+  \resizebox{0.95\linewidth}{!}{
+    \begin{tabular}{p{2.5cm} p{2.7cm} p{3cm} p{2.5cm} p{2cm}}
+      \toprule
+      \textbf{Ferramenta} & \textbf{Objetivo}                               & \textbf{Abordagem Técnica}                              & \textbf{Licença} & \textbf{Referência} \\
+      \midrule
+      Aletheia            & Estegoanálise estatística e visual              & Análise de ruído, histogramas e artefatos de compressão & MIT              & \cite{aletheia}     \\
+      StegExpose          & Detecção automatizada de esteganografia em lote & Combina métricas como Sample Pair e RS Analysis         & Não especificada & \cite{stegexpose}   \\
+      \bottomrule
+    \end{tabular}
+  }
+\end{table}
+
+A Tabela \ref{tab:tradicionais} apresenta um resumo comparativo das principais
+soluções software livre de estegoanálise em imagem analisadas.
+
+A Aletheia revela seu duplo propósito como uma ferramenta para analistas
+forenses e pesquisadores. Suas funcionalidades vão além da simples detecção,
+incorporando ataques estruturais a formatos de imagem, análise de metadados e,
+principalmente, a capacidade de realizar análises visuais e estatísticas. Por
+exemplo, a ferramenta permite a extração de histogramas de cores e a aplicação
+de filtros high-pass para amplificar ruídos, auxiliando um analista a
+identificar visualmente anomalias que podem indicar a presença de dados
+ocultos. Um diferencial importante da Aletheia é sua capacidade de lidar com o
+desafio do Cover Source Mismatch (CSM), um cenário comum em investigações do
+mundo real onde o modelo de detecção não foi treinado com o mesmo tipo de
+imagem que está sendo analisada. No entanto, sua principal limitação para
+usuários não especializados é a dependência da interpretação manual dos
+resultados, exigindo conhecimento técnico para tirar conclusões eficazes \cite{aletheia}.
+
+O StegExpose, por sua vez, foi projetado com outro objetivo: a detecção
+automatizada e em lote de esteganografia LSB em imagens de formato lossless
+(sem perdas), como PNG e BMP. Sua principal inovação técnica é o uso de fusion
+techniques (técnicas de fusão), que combinam os resultados de múltiplos
+detectores estatísticos conhecidos, como RS Analysis\footnote{A análise RS
+  (Regular/Singular groups) explora como a inserção de dados LSB afeta a contagem
+  de grupos de pixels regulares e singulares, revelando anomalias estatísticas.}
+e Sample Pair Analysis\footnote{A Sample Pair Analysis examina pares de pixels
+  e como seus valores mudam com a inserção de dados, detectando desvios em
+  relação a uma imagem limpa.}, para produzir uma classificação final mais
+precisa do que cada método individualmente. A ferramenta foi desenvolvida com
+foco em praticidade e velocidade, oferecendo dois modos de operação: um modo
+"padrão", que maximiza a precisão, e um modo "rápido", que otimiza o tempo de
+análise ao descartar arquivos considerados "limpos" nos estágios iniciais do
+processo. Sua principal limitação, reconhecida no próprio trabalho de origem, é
+ser especializada apenas em esteganografia LSB, não sendo projetada para
+detectar métodos mais avançados que operam no domínio da frequência (como em
+arquivos JPEG) \cite{stegexpose}.
+
+Em comum, ambas ferramentas têm como principal mérito a acessibilidade e a
+transparência, características garantidas pela Aletheia, por conta de sua
+licença de software livre e pelo StegExpose que, apesar de não definir uma
+licença específica, é um projeto de código aberto. Além disso, ambas
+ferramentas contribuem para o ensino e a experimentação prática, permitindo a
+inspeção de algoritmos e a reprodutibilidade de resultados. No entanto, sua
+precisão na detecção é limitada, principalmente quando confrontadas com métodos
+modernos baseados em aprendizado profundo.
+
+\subsection{Abordagens baseadas em redes neurais convolucionais (CNNs)}
+
+Com o avanço da inteligência artificial, modelos de aprendizado profundo
+passaram a ser adotados para estegoanálise, com desempenho superior às
+abordagens anteriores \cite{Fridrich2019SRNet}.
+
+\begin{table}[H]
+  \centering
+  \caption{Redes neurais de código aberto aplicadas à estegoanálise.}
+  \label{tab:cnns}
+  \resizebox{0.95\linewidth}{!}{
+    \begin{tabular}{p{2.5cm} p{3cm} p{3.5cm} p{2cm} p{2cm}}
+      \toprule
+      \textbf{Modelo} & \textbf{Arquitetura Base}                       & \textbf{Aplicação em Estegoanálise}                          & \textbf{Licença} & \textbf{Referência}                                  \\
+      \midrule
+      SRNet           & CNN profunda especializada em ruído residual    & Detecção de padrões sutis de modificação em pixels           & MIT              & \cite{Fridrich2019SRNet}                             \\
+      EfficientNet    & CNN escalável baseada em compound scaling       & Fine-tuning em datasets como ALASKA II, com alto desempenho  & Apache-2.0       & \cite{tan2019efficientnet, fridrich2021EfficientNet} \\
+      MixNet          & Variante da EfficientNet com convoluções mistas & Melhor generalização e leveza em comparação com EfficientNet & Apache-2.0       & \cite{tan2019mixnet}                                 \\
+      \bottomrule
+    \end{tabular}
+  }
+\end{table}
+
+A Tabela \ref{tab:cnns} apresenta uma síntese das principais redes utilizadas
+na área, destacando suas licenças e relevância como ferramentas de pesquisa.
+Esses modelos representam uma evolução metodológica na área: ao contrário das
+ferramentas tradicionais, que dependem de heurísticas e análise manual, as CNNs
+aprendem a identificar padrões de esteganografia diretamente dos dados.
+
+A SRNet (Steganalysis Residual Network), por exemplo, foi um marco por ser uma
+das primeiras arquiteturas profundas projetadas especificamente para
+estegoanálise. Sua principal inovação foi a criação de um bloco de camadas
+convolucionais sem pooling (agrupamento) e com conexões residuais, projetado
+para extrair e amplificar o "ruído residual", traços deixados pela inserção de
+dados, sem suprimir esse sinal fraco, algo que arquiteturas de classificação de
+imagem convencionais não fazem eficientemente. Ao ser "agnóstica" a
+heurísticas, a SRNet demonstrou a superioridade do aprendizado de
+características de ponta a ponta (end-to-end) e se tornou uma baseline
+essencial para a comparação de novos modelos na área \cite{Fridrich2019SRNet}.
+
+Posteriormente, a EfficientNet introduziu uma nova abordagem, não para a
+estegoanálise, mas para a eficiência de CNNs em geral. Sua arquitetura,
+encontrada por meio de busca de arquitetura neural (NAS), propõe um método de
+escalonamento composto (compound scaling) que equilibra de forma otimizada a
+profundidade, a largura e a resolução da rede. Pesquisadores em estegoanálise
+rapidamente adaptaram essa ideia, aplicando fine-tuning em modelos EfficientNet
+pré-treinados em grandes datasets como o ImageNet. Essa técnica provou ser
+altamente eficaz, alcançando ótimo desempenho em benchmarks de estegoanálise
+como o ALASKA II, demonstrando que uma arquitetura eficiente para visão
+computacional geral também pode ser uma poderosa ferramenta para detectar
+padrões esteganográficos \cite{tan2019efficientnet}.
+
+Derivada da EfficientNet, a MixNet aprimora ainda mais a eficiência ao
+introduzir a Mixed Depthwise Convolution (MixConv). Em vez de usar um único
+tamanho de kernel convolucional por camada (ex: 3x3 ou 5x5), a MixConv combina
+múltiplos tamanhos de kernel em uma única operação. Essa abordagem permite que
+o modelo capture padrões em diferentes escalas e resoluções simultaneamente,
+resultando em melhor precisão e generalização com um custo computacional ainda
+menor. Para a estegoanálise, isso representa uma direção promissora para o
+desenvolvimento de modelos que sejam não apenas precisos, mas também leves o
+suficiente para serem integrados em aplicações práticas e com recursos
+limitados \cite{tan2019mixnet}.
+
+No entanto, durante o levantamento bibliográfico realizado para esta pesquisa,
+notou-se que a MixNet foi a arquitetura menos frequentemente explorada.
+
+\subsection{Síntese comparativa e tendências}
+
+A análise das ferramentas mostra uma transição de paradigma na estegoanálise:
+uma passagem de métodos estatísticos, dependentes de interpretação humana, para
+abordagens automatizadas baseadas em aprendizado profundo. De um lado,
+ferramentas tradicionais como a Aletheia e o StegExpose democratizam o acesso à
+estegoanálise com foco em usabilidade e análise forense direcionada. A
+Aletheia, com suas análises visuais, serve como uma excelente ferramenta
+didática e investigativa, enquanto o StegExpose, com sua detecção em lote,
+oferece uma solução prática para varreduras em larga escala contra ataques LSB.
+Ambas, no entanto, atingem um teto de precisão por dependerem de heurísticas e
+características pré-definidas.
+
+Do outro lado, modelos de CNN como a SRNet e adaptações da EfficientNet
+representam o estado da arte em detecção. A SRNet inaugurou a era do
+aprendizado de características de ponta a ponta, provando que uma rede pode
+aprender a "ver" o ruído esteganográfico de forma mais eficaz que qualquer
+engenharia de características manual. A subsequente adoção da EfficientNet
+demonstra uma segunda tendência: a busca por eficiência. Contudo, essa evolução
+metodológica impõe uma nova barreira de entrada. O treinamento de tais modelos
+exige não apenas vastos conjuntos de dados, mas também um poder computacional
+significativo, envolvendo hardware especializado (como GPUs ou TPUs) e longos
+períodos de processamento. Esse requisito de recursos torna a replicação e o
+desenvolvimento de novas arquiteturas um desafio considerável para
+pesquisadores e desenvolvedores com acesso limitado a infraestrutura de alto
+desempenho, restringindo, em certo grau, a mesma democratização que as
+ferramentas clássicas promoveram.
+
+O princípio do software livre é um fator comum e essencial para o avanço de
+ambas as abordagens. Nas abordagens tradicionais, ele garante transparência e
+acessibilidade. Nas abordagens modernas, seu papel é ainda mais crucial. É o
+caráter aberto de frameworks como TensorFlow e PyTorch que viabiliza a
+implementação, o compartilhamento e a rápida iteração sobre arquiteturas como
+as analisadas. Essa cultura de colaboração permite que a comunidade científica
+construa sobre o trabalho alheio, adaptando uma EfficientNet para estegoanálise
+ou propondo uma MixNet, acelerando o ciclo de inovação de uma forma que seria
+difícil de ver em um ecossistema de código fechado.
+
+Por fim, a análise aponta para desafios persistentes e tendências futuras. A
+principal lacuna identificada é a ausência de ferramentas que integrem a alta
+precisão das CNNs com a usabilidade das soluções clássicas. Enquanto modelos
+como a MixNet apontam para um futuro de detectores leves e eficientes, eles
+permanecem, em grande parte, no domínio acadêmico. O próximo passo evolutivo
+para a estegoanálise de software livre parece ser, portanto, o desenvolvimento
+de soluções que unam esses dois mundos, criando ferramentas que sejam, ao mesmo
+tempo, poderosas, acessíveis e práticas para um público mais amplo.
 
 \section{Conclusão}\label{sec:figs}
 
