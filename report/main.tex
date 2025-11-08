@@ -537,13 +537,15 @@ abordagens anteriores \cite{Fridrich2019SRNet}.
   \caption{Redes neurais de código aberto aplicadas à estegoanálise.}
   \label{tab:cnns}
   \resizebox{0.95\linewidth}{!}{
-    \begin{tabular}{p{2.5cm} p{3cm} p{3.5cm} p{2cm} p{2cm}}
+    \begin{tabular}{p{4cm} p{3cm} p{4cm} p{2cm}}
       \toprule
-      \textbf{Modelo} & \textbf{Arquitetura Base}                       & \textbf{Aplicação em Estegoanálise}                          & \textbf{Licença} & \textbf{Referência}                                  \\
+      \textbf{Modelo} & \textbf{Arquitetura Base}                       & \textbf{Aplicação em Estegoanálise}                          & \textbf{Licença} \\
       \midrule
-      SRNet           & CNN profunda especializada em ruído residual    & Detecção de padrões sutis de modificação em pixels           & MIT              & \cite{Fridrich2019SRNet}                             \\
-      EfficientNet    & CNN escalável baseada em compound scaling       & Fine-tuning em datasets como ALASKA II, com alto desempenho  & Apache-2.0       & \cite{tan2019efficientnet, fridrich2021EfficientNet} \\
-      MixNet          & Variante da EfficientNet com convoluções mistas & Melhor generalização e leveza em comparação com EfficientNet & Apache-2.0       & \cite{tan2019mixnet}                                 \\
+      SRNet \cite{Fridrich2019SRNet}           & CNN profunda especializada em ruído residual    & Detecção de padrões sutis de modificação em pixels           & MIT    \\
+      \addlinespace
+      EfficientNet \cite{tan2019efficientnet, fridrich2021EfficientNet}    & CNN escalável baseada em compound scaling       & Fine-tuning em datasets como ALASKA II, com alto desempenho  \\
+      \addlinespace
+      MixNet \cite{tan2019mixnet}           & Variante da EfficientNet com convoluções mistas & Melhor generalização e leveza em comparação com EfficientNet & Apache-2.0   \\
       \bottomrule
     \end{tabular}
   }
