@@ -22,7 +22,7 @@
 
 \usepackage{float}
 
-\usepackage[brazil]{babel}   
+% \usepackage[brazil]{babel}   
 \usepackage[utf8]{inputenc}  
 
 \renewcommand\refname{Referências} % Troca nome da secao de references para referencias
@@ -311,7 +311,7 @@ learning: vulnerabilidade a ataques adversariais, qualidade e padronização dos
 datasets, ineficiência para lidar com imagens de tamanhos arbitrários,
 dificuldade na detecção de baixo payload, problema do cover-source mismatch,
 dificuldade na identificação de características globais, e necessidade de um
-grande número de amostras de treinamento. Como limitação, a revisão foca
+grande número de amostras de treinamento. Como limitação, a revisão foca, que
 principalmente em imagens no domínio espacial, deixando lacunas para outros
 domínios como JPEG.
 
@@ -472,11 +472,11 @@ prática, fornecendo utilitários acessíveis para detecção de dados ocultos.
   \resizebox{0.95\linewidth}{!}{
     \begin{tabular}{p{4cm} p{3cm} p{4cm} p{2cm}}
       \toprule
-      \textbf{Ferramenta} & \textbf{Objetivo}                               & \textbf{Abordagem Técnica}                              & \textbf{Licença} \\
+      \textbf{Ferramenta}          & \textbf{Objetivo}                               & \textbf{Abordagem Técnica}                              & \textbf{Licença} \\
       \midrule
-      Aletheia \cite{aletheia}    & Estegoanálise estatística e visual              & Análise de ruído, histogramas e artefatos de compressão & MIT              \\
+      Aletheia \cite{aletheia}     & Estegoanálise estatística e visual              & Análise de ruído, histogramas e artefatos de compressão & MIT              \\
       \addlinespace
-      StegExpose \cite{stegexpose}   & Detecção automatizada de esteganografia em lote & Combina métricas como Sample Pair e RS Analysis         & Não especificada  \\
+      StegExpose \cite{stegexpose} & Detecção automatizada de esteganografia em lote & Combina métricas como Sample Pair e RS Analysis         & Não especificada \\
       \bottomrule
     \end{tabular}
   }
@@ -497,7 +497,8 @@ desafio do Cover Source Mismatch (CSM), um cenário comum em investigações do
 mundo real onde o modelo de detecção não foi treinado com o mesmo tipo de
 imagem que está sendo analisada. No entanto, sua principal limitação para
 usuários não especializados é a dependência da interpretação manual dos
-resultados, exigindo conhecimento técnico para tirar conclusões eficazes \cite{aletheia}.
+resultados, exigindo conhecimento técnico para tirar conclusões eficazes
+\cite{aletheia}.
 
 O StegExpose, por sua vez, foi projetado com outro objetivo: a detecção
 automatizada e em lote de esteganografia LSB em imagens de formato lossless
@@ -540,13 +541,13 @@ abordagens anteriores \cite{Fridrich2019SRNet}.
   \resizebox{0.95\linewidth}{!}{
     \begin{tabular}{p{4cm} p{3cm} p{4cm} p{2cm}}
       \toprule
-      \textbf{Modelo} & \textbf{Arquitetura Base}                       & \textbf{Aplicação em Estegoanálise}                          & \textbf{Licença} \\
+      \textbf{Modelo}                                                   & \textbf{Arquitetura Base}                       & \textbf{Aplicação em Estegoanálise}                          & \textbf{Licença} \\
       \midrule
-      SRNet \cite{Fridrich2019SRNet}           & CNN profunda especializada em ruído residual    & Detecção de padrões sutis de modificação em pixels           & MIT    \\
+      SRNet \cite{Fridrich2019SRNet}                                    & CNN profunda especializada em ruído residual    & Detecção de padrões sutis de modificação em pixels           & MIT              \\
       \addlinespace
-      EfficientNet \cite{tan2019efficientnet, fridrich2021EfficientNet}    & CNN escalável baseada em compound scaling       & Fine-tuning em datasets como ALASKA II, com alto desempenho & Apache-2.0 \\
+      EfficientNet \cite{tan2019efficientnet, fridrich2021EfficientNet} & CNN escalável baseada em compound scaling       & Fine-tuning em datasets como ALASKA II, com alto desempenho  & Apache-2.0       \\
       \addlinespace
-      MixNet \cite{tan2019mixnet}           & Variante da EfficientNet com convoluções mistas & Melhor generalização e leveza em comparação com EfficientNet & Apache-2.0   \\
+      MixNet \cite{tan2019mixnet}                                       & Variante da EfficientNet com convoluções mistas & Melhor generalização e leveza em comparação com EfficientNet & Apache-2.0       \\
       \bottomrule
     \end{tabular}
   }
@@ -625,7 +626,7 @@ ferramentas clássicas promoveram.
 
 O princípio do software livre é um fator comum e essencial para o avanço de
 ambas as abordagens. Nas abordagens tradicionais, ele garante transparência e
-acessibilidade. Nas abordagens modernas, seu papel é ainda mais crucial. É o
+acessibilidade. Nas abordagens modernas, seu papel é ainda mais crucial. É, que o
 caráter aberto de frameworks como TensorFlow e PyTorch que viabiliza a
 implementação, o compartilhamento e a rápida iteração sobre arquiteturas como
 as analisadas. Essa cultura de colaboração permite que a comunidade científica
@@ -643,6 +644,34 @@ de soluções que unam esses dois mundos, criando ferramentas que sejam, ao mesm
 tempo, poderosas, acessíveis e práticas para um público mais amplo.
 
 \section{Conclusão}\label{sec:figs}
+
+O presente estudo atingiu seu objetivo de analisar ferramentas de software
+livre voltadas para a esteganografia e esteganálise, compreendendo tanto as
+soluções tradicionais quanto as baseadas no estado da arte em Redes Neurais
+Convolucionais.
+
+A análise comparativa evidenciou uma transição de paradigma na área. Por um
+lado, as ferramentas tradicionais, como Aletheia e StegExpose, cumprem um papel
+fundamental na democratização do conhecimento, oferecendo interfaces acessíveis
+e transparência algorítmica essenciais para o ensino e para a análise forense
+preliminar. Contudo, sua dependência de heurísticas manuais impõe um teto de
+performance quando comparado a abordagens baseadas em redes neurais.
+
+Por outro lado, as abordagens baseadas em CNNs, exemplificadas pela SRNet e
+pelas adaptações da EfficientNet, demonstraram superioridade técnica,
+aprendendo de forma automatizada. Entretanto, observou-se que essa evolução
+técnica trouxe consigo um novo desafio: a barreira do custo computacional. A
+exigência de hardware de alto desempenho para o treinamento desses modelos
+restringe a acessibilidade que o software livre visa promover, criando um
+distanciamento entre a precisão acadêmica e a aplicação prática por usuários
+comuns.
+
+Conclui-se, portanto, que o software livre atua como um alicerce para ambas as
+vertentes, fomentando a colaboração e acelerando a inovação através de
+frameworks abertos. O futuro da esteganálise não reside apenas na busca por
+maior precisão, mas na eficiência e usabilidade. A tendência aponta para o
+desenvolvimento de arquiteturas, que cada vez mais aumentem a acessibilidade e
+auditabilidade da segurança da informação.
 
 % \begin{figure}[ht]
 % \centering
