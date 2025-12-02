@@ -43,23 +43,23 @@ Pinhais - PR - Brasil\\
 \maketitle
 
 \begin{abstract}
-This work analyzes free and open-source tools for image steganography and steganalysis, 
-covering both traditional methods and modern approaches based on convolutional neural networks (CNNs).
- Classical tools such as Aletheia and StegExpose provide accessibility and transparency, yet show limitations when facing advanced steganographic algorithms. 
- Conversely, CNN-based models including SRNet, EfficientNet, and MixNet achieve superior performance by automatically learning subtle modification patterns 
- but require significant computational resources. The analysis reveals a paradigm shift in the field and highlights the importance of open-source software 
- in enabling research. 
-The study concludes that future steganalysis solutions must balance accuracy, efficiency, and usability.
+  This work analyzes free and open-source tools for image steganography and steganalysis,
+  covering both traditional methods and modern approaches based on convolutional neural networks (CNNs).
+  Classical tools such as Aletheia and StegExpose provide accessibility and transparency, yet show limitations when facing advanced steganographic algorithms.
+  Conversely, CNN-based models including SRNet, EfficientNet, and MixNet achieve superior performance by automatically learning subtle modification patterns
+  but require significant computational resources. The analysis reveals a paradigm shift in the field and highlights the importance of open-source software
+  in enabling research.
+  The study concludes that future steganalysis solutions must balance accuracy, efficiency, and usability.
 \end{abstract}
 
 \begin{resumo}
-  Este trabalho analisa ferramentas de software livre voltadas à esteganografia e estegonálise em imagens digitais, 
-  abrangendo métodos tradicionais e abordagens modernas baseadas em redes neurais convolucionais (CNNs). 
-  Ferramentas clássicas, como Aletheia e StegExpose, 
-  oferecem acessibilidade e transparência, porém apresentam limitações frente a algoritmos esteganográficos avançados. 
-  Já as CNNs como SRNet, EfficientNet e 
-  MixNet demonstram desempenho superior ao aprenderem automaticamente padrões sutis de modificação, embora dependam de alto poder computacional. 
-  A análise evidencia uma transição de paradigma na área e destaca o papel do software livre na democratização da pesquisa. Conclui-se que o futuro da estegonálise 
+  Este trabalho analisa ferramentas de software livre voltadas à esteganografia e estegonálise em imagens digitais,
+  abrangendo métodos tradicionais e abordagens modernas baseadas em redes neurais convolucionais (CNNs).
+  Ferramentas clássicas, como Aletheia e StegExpose,
+  oferecem acessibilidade e transparência, porém apresentam limitações frente a algoritmos esteganográficos avançados.
+  Já as CNNs como SRNet, EfficientNet e
+  MixNet demonstram desempenho superior ao aprenderem automaticamente padrões sutis de modificação, embora dependam de alto poder computacional.
+  A análise evidencia uma transição de paradigma na área e destaca o papel do software livre na democratização da pesquisa. Conclui-se que o futuro da estegonálise
   requer soluções que combinem precisão, eficiência e usabilidade.
 
 \end{resumo}
@@ -80,18 +80,18 @@ soluções digitais, por permitir auditoria e aprendizado mútuo, e fomenta
 ambientes colaborativos dinâmicos, onde ferramentas podem ser aprimoradas
 coletivamente.
 
-No contexto da esteganografia, a disponibilidade de ferramentas abertas
-amplia as possibilidades de pesquisa e aplicação prática. A análise de imagens
+No contexto da esteganografia, a disponibilidade de ferramentas abertas amplia
+as possibilidades de pesquisa e aplicação prática. A análise de imagens
 digitais se beneficia de recursos que vão de técnicas clássicas de inspeção
-estatística e visual (por exemplo, Aletheia) a detectores automatizados em
-lote (como StegExpose), bem como de abordagens recentes de aprendizado de
-máquina que elevam a acurácia da detecção.
+estatística e visual (por exemplo, Aletheia) a detectores automatizados em lote
+(como StegExpose), bem como de abordagens recentes de aprendizado de máquina
+que elevam a acurácia da detecção.
 
-A esteganografia pode ser compreendida como a técnica de ocultar informações
-em meios aparentemente comuns, de forma que um observador externo não consiga
-identificar a presença de dados ocultos \cite{Fridrich2010}. Assim, o campo
-não se limita ao ato de esconder informações, mas abrange técnicas, algoritmos
-e aplicações destinadas a garantir a confidencialidade e a discrição da
+A esteganografia pode ser compreendida como a técnica de ocultar informações em
+meios aparentemente comuns, de forma que um observador externo não consiga
+identificar a presença de dados ocultos \cite{Fridrich2010}. Assim, o campo não
+se limita ao ato de esconder informações, mas abrange técnicas, algoritmos e
+aplicações destinadas a garantir a confidencialidade e a discrição da
 comunicação. Em contraste com a criptografia, que protege o conteúdo sem
 ocultar sua existência, a esteganografia busca mascarar o próprio ato de
 comunicar \cite{Fridrich2010}. Essa característica a torna estratégica tanto
@@ -117,11 +117,11 @@ aprofundamento de seu estudo.
 
 \subsection{Objetivo}
 
-Compreender como ferramentas de código aberto são usadas no contexto de 
-esteganografia e estegoanálise em imagens digitais, considerando tanto soluções tradicionais
-quanto abordagens recentes baseadas em CNNs. Busca-se compreender como essas
-ferramentas se estruturam, quais funcionalidades oferecem e de que forma
-contribuem para o avanço da área, identificando tendências, limitações e
+Compreender como ferramentas de código aberto são usadas no contexto de
+esteganografia e estegoanálise em imagens digitais, considerando tanto soluções
+tradicionais quanto abordagens recentes baseadas em CNNs. Busca-se compreender
+como essas ferramentas se estruturam, quais funcionalidades oferecem e de que
+forma contribuem para o avanço da área, identificando tendências, limitações e
 possibilidades de integração entre métodos clássicos e modernos.
 
 \section{Revisão bibliográfica} \label{sec:firstpage}
@@ -315,8 +315,8 @@ quanto das de esteganálise. Os autores partem da premissa de que, com os
 avanços em comunicação e tecnologia da informação, os métodos para ocultar
 dados em imagens tornaram-se mais robustos, desafiando as abordagens de
 detecção tradicionais \cite{farooq2023systematic}. Enquanto métodos clássicos
-se baseiam em um processo de duas etapas—extração manual de características
-(como os Rich Models) e classificação (usando SVMs ou Ensemble Classifiers)—, o
+se baseiam em um processo de duas etapas, extração manual de características
+(como os Rich Models) e classificação (usando SVMs ou Ensemble Classifiers), o
 aprendizado profundo (deep learning, DL) emergiu como uma alternativa superior,
 unificando essas etapas e aprendendo automaticamente as características mais
 relevantes diretamente dos dados brutos \cite{farooq2023systematic}. Essa
@@ -337,12 +337,8 @@ neurais artificiais (ANN), estabelecendo um contexto histórico e técnico
 \cite{farooq2023systematic}. O foco principal, no entanto, é a análise
 cronológica das abordagens baseadas em DL, com especial atenção às Redes
 Neurais Convolucionais (CNNs). O artigo revisa uma sequência de trabalhos
-influentes, começando com as primeiras propostas de Tan et al. (2014) e Qian et
-al. (2015), e avançando para arquiteturas mais complexas e eficazes como as de
-Xu et al. (2016), Ye et al. (2017), Yedroudj et al. (2018), e a SRNet de
-Boroumand et al. (2019) \cite{farooq2023systematic}. Para cada trabalho, os
-autores analisam a arquitetura da rede, as funções de ativação utilizadas, as
-bases de dados (como BOSSBase, BOWS2 e ImageNet), os algoritmos
+influentes, analisando a arquitetura da rede, as funções de ativação
+utilizadas, as bases de dados (como BOSSBase, BOWS2 e ImageNet), os algoritmos
 esteganográficos alvo (S-UNIWARD, WOW, HILL, etc.) e os resultados de
 desempenho reportados. Além disso, a pesquisa compila e discute os principais
 datasets de referência, as métricas de avaliação quantitativas (como taxa de
@@ -358,73 +354,84 @@ algoritmos esteganográficos (como HUGO, WOW, S-UNIWARD) e em diferentes taxas
 de inserção de dados (payloads) \cite{farooq2023systematic}. A análise dos
 resultados mostra uma clara evolução: os primeiros modelos de CNN apresentavam
 desempenho comparável ou ligeiramente inferior aos métodos tradicionais (como o
-SRM com Ensemble Classifier), mas com o avanço no design das
-arquiteturas—incorporando camadas de pré-processamento com filtros, funções de
-ativação mais adequadas (como a TLU), normalização em lote (BN), e arquiteturas
-residuais profundas—, os modelos mais recentes superaram significativamente os
-métodos clássicos, especialmente em cenários com maior payload
+SRM com Ensemble Classifier), mas com o avanço no design das arquiteturas,
+incorporando camadas de pré-processamento com filtros, funções de ativação mais
+adequadas (como a TLU), normalização em lote (BN), e arquiteturas residuais
+profundas, os modelos mais recentes superaram significativamente os métodos
+clássicos, especialmente em cenários com maior payload
 \cite{farooq2023systematic}. O artigo destaca, por exemplo, o desempenho
 superior de modelos como o de Yedroudj et al. e a SRNet, que estabeleceram
 novos padrões de acurácia na detecção \cite{farooq2023systematic}.
 
-Os pontos fortes deste artigo são a sua abrangência e o seu caráter
-sistemático. Ele funciona como um documento de referência completo, não apenas
-listando os trabalhos, mas contextualizando-os, explicando a evolução das
-ideias e das arquiteturas, e oferecendo uma análise comparativa clara. Outro
-ponto forte crucial é a identificação detalhada das limitações e dos desafios
-de pesquisa em aberto, que incluem: a dificuldade na detecção de
-características estatísticas de sinais esteganográficos fracos; o desafio
-persistente da detecção em cenários de baixo payload; os problemas de
-generalização (como steganographic mismatch, cover-source mismatch e payload
-mismatch); e a necessidade de mais pesquisas em esteganálise quantitativa e
-locativa usando DL \cite{farooq2023systematic}. Uma limitação inerente a
-qualquer trabalho de revisão é que ele depende da qualidade e da consistência
-dos dados reportados pelos artigos originais, não gerando novos resultados
-empíricos por si só.
+Embora as revisões sistemáticas e as arquiteturas de redes neurais definam a
+fronteira do conhecimento teórico, a aplicação forense efetiva exige a tradução
+desses avanços em ferramentas de software utilizáveis e auditáveis. Nesse
+sentido, destacam-se iniciativas de código aberto que buscam implementar tanto
+técnicas clássicas quanto abordagens modernas de aprendizado profundo.
 
-%trabalho 8
-Buscando avançar o estado da arte em esteganálise no domínio espacial, o artigo
-\textit{A convolutional neural network to detect possible hidden data in
-  spatial domain images} de La Croix \cite{croix2023CNN} propõe uma nova
-arquitetura de rede neural convolucional. A principal motivação dos autores é a
-observação de que, embora as CNNs existentes tenham superado as técnicas
-clássicas, elas ainda apresentam problemas de desempenho em termos de acurácia
-de classificação e estabilidade durante o treinamento. O objetivo do trabalho
-é, portanto, projetar uma nova arquitetura que enderece essas lacunas,
-melhorando tanto a precisão na detecção de dados ocultos quanto a estabilidade
-do treinamento, através de inovações específicas nas fases de
-pré-processamento, extração de características e classificação.
+O trabalho \textit{"Aletheia: an open-source toolbox for steganalysis"} de
+Lerch-Hostalot e Megías \cite{aletheia} aborda a necessidade de ferramentas que
+acompanhem a evolução das ameaças esteganográficas, especificamente aquelas que
+utilizam aprendizado profundo e que operam em cenários reais onde ocorre o
+problema do \textit{Cover Source Mismatch} (CSM). Os autores identificaram que,
+embora o interesse em esteganálise baseada em \textit{Deep Learning} tenha
+crescido, faltavam ferramentas que permitissem aos analistas aplicar esses
+modelos modernos de forma prática e aos pesquisadores comparar métodos de
+maneira padronizada. O objetivo do Aletheia é preencher essa lacuna, fornecendo
+uma plataforma unificada para simulação, treinamento e detecção.
 
-A metodologia consiste no desenvolvimento de uma CNN customizada que se inicia
-com filtros não treináveis do Spatial Rich Model (SRM) para amplificar o ruído
-esteganográfico. A principal inovação está na fase de extração de
-características, onde se utiliza uma combinação de convoluções separáveis em
-profundidade (depthwise separable convolutions) com a função de ativação Leaky
-Rectified Linear Unit (LReLU) para reduzir parâmetros, evitar o sobreajuste e
-melhorar a estabilidade do gradiente. Na classificação, um módulo de pooling
-multi-escala agrega as características de forma eficiente. O experimento
-principal comparou o desempenho da rede proposta com modelos de ponta (Ye-Net,
-GBRAS-Net) nos datasets BOSSbase e BOWS 2 contra os algoritmos S-UNIWARD e WOW,
-demonstrando consistentemente uma performance superior.
+A metodologia do Aletheia consiste em uma caixa de ferramentas modular
+desenvolvida em Python que incorpora simuladores para algoritmos de
+esteganografia comuns (como HILL e S-UNIWARD) e modelos de classificação
+baseados em redes neurais eficientes. O software implementa ataques estruturais
+e estatísticos, mas seu diferencial reside na inclusão de técnicas específicas
+para lidar com o CSM, como o uso de \textit{DCI (Detection of Classifier
+  Inconsistencies)}, permitindo que o sistema mantenha a acurácia mesmo quando as
+propriedades estatísticas da fonte da imagem divergem das do treinamento. Além
+disso, a ferramenta oferece funcionalidades de calibração automática e
+preparação de datasets para experimentos controlados.
 
-Um dos pontos fortes mais significativos do trabalho é o ganho de desempenho
-expressivo sobre o estado da arte, com melhorias na acurácia que chegam a mais
-de 10\% em alguns cenários. Os autores validam rigorosamente a contribuição de
-cada componente inovador através de um estudo de ablação, que demonstra que o
-uso de convoluções separáveis, a ativação LReLU e o pooling multi-escala,
-individualmente, trazem ganhos substanciais para o resultado final. Como
-limitação, a avaliação do artigo se concentra exclusivamente em algoritmos do
-domínio espacial, não explorando o desempenho da arquitetura em domínios de
-transformação como o JPEG, e embora apresente resultados preliminares para
-imagens de tamanhos arbitrários, uma análise aprofundada desse cenário é
-declarada como fora do escopo do trabalho.
+O principal ponto forte do Aletheia é ser, segundo os autores, a única
+ferramenta de esteganálise disponível publicamente que incorpora técnicas
+modernas para mitigação de CSM, tornando-a particularmente relevante para
+cenários forenses do mundo real onde a fonte da imagem é desconhecida.
 
-% Isso daqui vai ser nossa "conclusão" da revisão bibliográfica, já q é basicamente isso q a gente tem de diferente
-Em contraste com os trabalhos revisados, que focam em ....., a proposta
-desenvolvida neste trabalho busca explorar o uso de bibliotecas de software
-livre para a construção de modelos de inteligência artificial em esteganálise,
-democratizando a área ao garantir reprodutibilidade, baixo custo e
-acessibilidade.
+Focando na eficiência do processamento em massa, a dissertação
+\textit{"StegExpose: A Tool for Detecting LSB Steganography"} de Boehm
+\cite{stegexpose} propõe uma abordagem voltada para a velocidade e a fusão de
+detectores. A motivação do trabalho surgiu da constatação de que, em
+investigações forenses reais, o analista frequentemente lida com milhares de
+arquivos, tornando inviável o uso de métodos computacionalmente custosos para
+uma triagem inicial. O objetivo foi criar uma ferramenta capaz de realizar
+esteganálise em lote (bulk analysis) em imagens lossless (PNG e BMP),
+combinando múltiplos algoritmos para equilibrar precisão e tempo de execução.
+
+A metodologia do StegExpose baseia-se na técnica de fusão de detectores,
+integrando quatro métodos clássicos de análise LSB: \textit{Primary Sets},
+\textit{Sample Pairs}, \textit{RS Analysis} e \textit{Chi Square}. O autor
+desenvolveu um algoritmo denominado "Fast Fusion", que opera em estágios: se um
+arquivo é considerado limpo pelos detectores mais rápidos e menos precisos, ele
+é descartado da análise subsequente, economizando recursos computacionais. A
+ferramenta foi validada em um conjunto de 15.200 imagens provenientes do
+Flickr, comparando a precisão da fusão padrão (média aritmética das
+probabilidades) contra a fusão rápida.
+
+O estudo contribui ao demonstrar que a fusão de detectores supera a performance
+individual de cada componente, com a "fusão padrão" atingindo uma AUC de
+aproximadamente 95,8\%, enquanto a "fusão rápida" oferece uma troca aceitável,
+sendo mais de três vezes mais rápida com uma perda marginal de precisão. A
+limitação óbvia do StegExpose é seu escopo restrito à esteganografia LSB em
+domínio espacial e o uso de métodos pré-\textit{Deep Learning}, o que o torna
+ineficaz contra algoritmos modernos adaptativos ou esteganografia em JPEG, mas
+ele permanece um exemplo seminal de engenharia de software para triagem
+forense.
+
+Enquanto os trabalhos revisados concentram-se predominantemente na proposição
+de novas arquiteturas ou na validação de algoritmos específicos, esta pesquisa
+trás como objetivo central não apenas revisar a literatura, mas analisar como o
+software livre viabiliza a aplicação prática desses métodos, contrastando a
+acessibilidade das ferramentas tradicionais com a complexidade e o desempenho
+dos modernos modelos baseados em redes neurais.
 
 \section{Metodologia}
 A pesquisa será conduzida de forma qualitativa e descritiva. Inicialmente, será
@@ -607,14 +614,14 @@ representam o estado da arte em detecção. A SRNet inaugurou a era do
 aprendizado de características de ponta a ponta, provando que uma rede pode
 aprender a "ver" o ruído esteganográfico de forma mais eficaz que qualquer
 engenharia de características manual. A subsequente adoção da EfficientNet
-demonstram uma segunda tendência: a busca por eficiência. Contudo, essa evolução
-metodológica impõe uma nova barreira de entrada. O treinamento de tais modelos
-exige não apenas vastos conjuntos de dados, mas também um poder computacional
-significativo, envolvendo hardware especializado (como GPUs ou TPUs) e longos
-períodos de processamento. Esse requisito de recursos torna a replicação e o
-desenvolvimento de novas arquiteturas um desafio considerável para
-pesquisadores e desenvolvedores com acesso limitado a infraestrutura de alto
-desempenho, restringindo, em certo grau, a mesma democratização que as
+demonstram uma segunda tendência: a busca por eficiência. Contudo, essa
+evolução metodológica impõe uma nova barreira de entrada. O treinamento de tais
+modelos exige não apenas vastos conjuntos de dados, mas também um poder
+computacional significativo, envolvendo hardware especializado (como GPUs ou
+TPUs) e longos períodos de processamento. Esse requisito de recursos torna a
+replicação e o desenvolvimento de novas arquiteturas um desafio considerável
+para pesquisadores e desenvolvedores com acesso limitado a infraestrutura de
+alto desempenho, restringindo, em certo grau, a mesma democratização que as
 ferramentas clássicas promoveram.
 
 O princípio do software livre é um fator comum e essencial para o avanço de
@@ -639,8 +646,8 @@ tempo, poderosas, acessíveis e práticas para um público mais amplo.
 \section{Conclusão}\label{sec:figs}
 
 O presente estudo atingiu seu objetivo de analisar ferramentas de código aberto
-voltadas para a esteganografia e esteganálise, compreendendo tanto as
-soluções tradicionais quanto as baseadas no estado da arte em Redes Neurais
+voltadas para a esteganografia e esteganálise, compreendendo tanto as soluções
+tradicionais quanto as baseadas no estado da arte em Redes Neurais
 Convolucionais.
 
 A análise comparativa evidenciou uma transição de paradigma na área. Por um
@@ -651,13 +658,13 @@ preliminar. Contudo, sua dependência de heurísticas manuais impõe um teto de
 desempenho quando comparado a abordagens baseadas em redes neurais.
 
 Por outro lado, as abordagens baseadas em CNNs, exemplificadas pela SRNet e
-pelas adaptações da EfficientNet, demonstraram superioridade técnica, com aprendizado autônomo. 
-Entretanto, observou-se que essa evolução técnica trouxe consigo novos desafios: 
-alto custo computacional e demanda por grandes volumes de dados para treinamento. A
-exigência de hardware de alto desempenho para o treinamento desses modelos
-restringe a acessibilidade que o software livre visa promover, limitando a reprodutibilidade e
-criando um distanciamento entre a precisão acadêmica e a aplicação prática por usuários
-comuns.
+pelas adaptações da EfficientNet, demonstraram superioridade técnica, com
+aprendizado autônomo. Entretanto, observou-se que essa evolução técnica trouxe
+consigo novos desafios: alto custo computacional e demanda por grandes volumes
+de dados para treinamento. A exigência de hardware de alto desempenho para o
+treinamento desses modelos restringe a acessibilidade que o software livre visa
+promover, limitando a reprodutibilidade e criando um distanciamento entre a
+precisão acadêmica e a aplicação prática por usuários comuns.
 
 Conclui-se, portanto, que o software livre atua como um alicerce para ambas as
 vertentes, fomentando a colaboração e acelerando a inovação através de
